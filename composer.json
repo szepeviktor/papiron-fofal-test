@@ -1,0 +1,32 @@
+{
+    "name": "revotech/fofal",
+    "type": "wordpress-plugin",
+    "description": "Főfiók - alfiók plugin",
+    "homepage": "http://revotech.hu",
+    "license": "GPL",
+    "authors": [
+        {
+            "name": "Ötvös Gyula",
+            "email": "otvos.gyula@revotech.hu"
+        }
+    ],
+    "require": {
+        "php": ">=7.1"
+    },
+    "require-dev": {
+        "giacocorsiglia/wordpress-stubs": "^5.1",
+        "phpstan/phpstan": "^0.11.5"
+    },
+    "autoload": {
+        "classmap": ["includes/", "public/", "admin/"]
+    },
+    "autoload-dev": {
+        "classmap": ["test/"]
+    },
+    "config": {
+        "preferred-install": {
+            "*": "dist"
+        },
+        "classmap-authoritative": true
+    }
+}

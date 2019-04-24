@@ -1,0 +1,27 @@
+# See options in https://github.com/phpstan/phpstan/blob/master/conf/config.neon
+services:
+    -
+        class: PHPStan\WordPress\IsWpErrorFunctionTypeSpecifyingExtension
+        tags:
+            - phpstan.typeSpecifier.functionTypeSpecifyingExtension
+    -
+        class: PHPStan\WordPress\WpThemeMagicPropertiesClassReflectionExtension
+        tags:
+            - phpstan.broker.propertiesClassReflectionExtension
+parameters:
+    level: max
+    paths:
+        - %currentWorkingDirectory%/includes/
+        - %currentWorkingDirectory%/public/
+        - %currentWorkingDirectory%/admin/
+    excludes_analyse:
+        - %currentWorkingDirectory%/public/partials/
+        - %currentWorkingDirectory%/admin/partials/
+    autoload_files:
+        - %currentWorkingDirectory%/vendor/giacocorsiglia/wordpress-stubs/wordpress-stubs.php
+        - %currentWorkingDirectory%/test/wc-stubs.php
+        - %currentWorkingDirectory%/test/phpstan-bootstrap.php
+    #autoload_directories:
+    ignoreErrors:
+        - '#^Function apply_filters invoked with [345] parameters, 2 required\.$#'
+        - '/^Parameter #2 \$deprecated of function load_plugin_textdomain expects string, false given\.$/'
